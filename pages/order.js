@@ -46,15 +46,9 @@ async function renderOrders() {
                                         <span class="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">${order.quantity}</span>
                                     </td>
                                     <td class="px-4 py-4 text-right space-x-2">
-                                        <a href="#/orders/${order.id}" class="text-blue-600 hover:text-blue-800 text-sm">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="#/orders/${order.id}/edit" class="text-green-600 hover:text-green-800 text-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <button onclick="deleteOrder(${order.id})" class="text-red-600 hover:text-red-800 text-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        <a href="#/orders/${order.id}" class="text-blue-600 hover:text-blue-800 text-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="#/orders/${order.id}/edit" class="text-green-600 hover:text-green-800 text-sm"><i class="fas fa-edit"></i></a>
+                                        <button onclick="deleteOrder(${order.id})" class="text-red-600 hover:text-red-800 text-sm"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             `;

@@ -36,9 +36,12 @@ function router() {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('bg-blue-600', 'text-white');
         link.classList.add('hover:bg-gray-800');
-        const routePath = hash.replace('#', '').split('/')[1] || '';
+    });
+    
+    const currentPath = hash.replace('#', '').split('/')[1] || '';
+    document.querySelectorAll('.nav-link').forEach(link => {
         const linkRoute = link.dataset.route.replace('/', '');
-        if ((routePath === '' && link.dataset.route === '/') || routePath === linkRoute) {
+        if ((currentPath === '' && link.dataset.route === '/') || currentPath === linkRoute) {
             link.classList.add('bg-blue-600', 'text-white');
             link.classList.remove('hover:bg-gray-800');
         }
@@ -47,7 +50,7 @@ function router() {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '<div class="flex items-center justify-center h-64"><i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i></div>';
     
-    setTimeout(() => route.handler(params), 300);
+    setTimeout(() => route.handler(params), 100);
 }
 
 window.addEventListener('hashchange', router);

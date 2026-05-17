@@ -1,3 +1,4 @@
+// Router configuration
 const routes = {
     '/': { handler: () => renderDashboard() },
     '/users': { handler: () => renderUsers() },
@@ -36,12 +37,12 @@ function router() {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('bg-blue-600', 'text-white');
         link.classList.add('hover:bg-gray-800');
-    });
-    
-    const currentPath = hash.replace('#', '').split('/')[1] || '';
-    document.querySelectorAll('.nav-link').forEach(link => {
-        const linkRoute = link.dataset.route.replace('/', '');
-        if ((currentPath === '' && link.dataset.route === '/') || currentPath === linkRoute) {
+        
+        const linkRoute = link.dataset.route;
+        const currentPath = hash.replace('#', '').split('/')[1] || '';
+        const linkPath = linkRoute.replace('/', '');
+        
+        if ((currentPath === '' && linkRoute === '/') || currentPath === linkPath) {
             link.classList.add('bg-blue-600', 'text-white');
             link.classList.remove('hover:bg-gray-800');
         }
@@ -50,14 +51,28 @@ function router() {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '<div class="flex items-center justify-center h-64"><i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i></div>';
     
-    setTimeout(() => route.handler(params), 100);
+    // Call handler
+    setTimeout(() => {
+        try {
+            route.handler(params);
+        } catch (error) {
+            console.error('Router error:', error);
+            mainContent.innerHTML = `<div class="text-center py-12 text-red-500">Error: ${error.message}</div>`;
+        }
+    }, 100);
 }
 
+// Event listeners
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
 
+// Mobile menu
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('menu-btn')?.addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('-translate-x-full');
-    });
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+    }
 });

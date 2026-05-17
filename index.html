@@ -51,7 +51,9 @@
 
     <!-- Main Content -->
     <main class="md:ml-64 min-h-screen p-4 sm:p-6 md:p-8 lg:p-10" id="main-content">
-        <!-- Content loads here -->
+        <div class="flex items-center justify-center h-64">
+            <p class="text-gray-500">Loading...</p>
+        </div>
     </main>
 
     <!-- Toast -->
@@ -59,7 +61,7 @@
         <span id="toast-message"></span>
     </div>
 
-    <!-- Load scripts in correct order -->
+    <!-- Scripts -->
     <script src="utils/api.js"></script>
     <script src="pages/dashboard.js"></script>
     <script src="pages/users.js"></script>

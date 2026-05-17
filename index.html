@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Django API</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="min-h-screen bg-gray-100 font-sans">
@@ -18,30 +16,29 @@
                 <i class="fas fa-cube mr-2"></i>Admin Panel
             </h1>
         </div>
-        
         <ul class="mt-6 space-y-2 px-4">
             <li>
                 <a href="#/" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/">
                     <i class="fas fa-tachometer-alt w-6"></i>
-                    <span class="hidden md:inline">Dashboard</span>
+                    <span>Dashboard</span>
                 </a>
             </li>
             <li>
                 <a href="#/users" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/users">
                     <i class="fas fa-users w-6"></i>
-                    <span class="hidden md:inline">Users</span>
+                    <span>Users</span>
                 </a>
             </li>
             <li>
                 <a href="#/products" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/products">
                     <i class="fas fa-box w-6"></i>
-                    <span class="hidden md:inline">Products</span>
+                    <span>Products</span>
                 </a>
             </li>
             <li>
                 <a href="#/orders" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/orders">
                     <i class="fas fa-shopping-cart w-6"></i>
-                    <span class="hidden md:inline">Orders</span>
+                    <span>Orders</span>
                 </a>
             </li>
         </ul>
@@ -52,16 +49,30 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <!-- Main Content Area -->
-    <main class="md:ml-64 min-h-screen p-4 sm:p-6 md:p-8 lg:p-10 transition-all duration-300" id="main-content">
-        <!-- Dynamic content loads here -->
+    <!-- Main Content -->
+    <main class="md:ml-64 min-h-screen p-4 sm:p-6 md:p-8 lg:p-10" id="main-content">
+        <div class="flex items-center justify-center h-64">
+            <i class="fas fa-spinner fa-spin text-4xl text-blue-500"></i>
+        </div>
     </main>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 transition-transform duration-300 z-50">
         <span id="toast-message"></span>
     </div>
 
+    <!-- Load scripts in order -->
+    <script src="utils/api.js"></script>
+    <script src="pages/dashboard.js"></script>
+    <script src="pages/users.js"></script>
+    <script src="pages/userForm.js"></script>
+    <script src="pages/userDetail.js"></script>
+    <script src="pages/products.js"></script>
+    <script src="pages/productForm.js"></script>
+    <script src="pages/productDetail.js"></script>
+    <script src="pages/orders.js"></script>
+    <script src="pages/orderForm.js"></script>
+    <script src="pages/orderDetail.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

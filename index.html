@@ -3,82 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM Project - Tailwind CSS</title>
+    <title>Admin Panel - Django API</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8 sm:px-6 md:px-8 lg:px-12">
-
-    <!-- Main Container -->
-    <div class="bg-white w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 
-                p-6 sm:p-8 md:p-10 lg:p-12 
-                rounded-lg sm:rounded-xl md:rounded-2xl 
-                shadow-md sm:shadow-lg md:shadow-xl lg:shadow-2xl 
-                border border-gray-200 sm:border-gray-300 
-                text-center">
-
-        <!-- Title -->
-        <h1 id="title" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 
-                             font-bold text-gray-800 
-                             mb-4 sm:mb-5 md:mb-6 lg:mb-7 
-                             tracking-tight sm:tracking-normal md:tracking-wide 
-                             leading-tight sm:leading-snug md:leading-normal">
-            Document Object Model
-        </h1>
-
-        <!-- Paragraph -->
-        <p id="text" class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 
-                              text-gray-600 
-                              mb-6 sm:mb-7 md:mb-8 lg:mb-9 
-                              leading-relaxed sm:leading-loose 
-                              px-2 sm:px-4 md:px-6 lg:px-8">
-            Click the button to change this text.
-        </p>
-
-        <!-- Buttons Container -->
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-5 lg:gap-6 
-                    justify-center items-center">
-
-            <!-- Change Text Button -->
-            <button id="btn-text" class="w-full sm:w-auto 
-                         px-4 sm:px-6 md:px-8 lg:px-10 
-                         py-2 sm:py-2.5 md:py-3 lg:py-3.5 
-                         text-sm sm:text-base md:text-lg 
-                         font-semibold text-white 
-                         bg-green-500 sm:bg-green-600 md:bg-green-700 
-                         hover:bg-green-600 sm:hover:bg-green-700 md:hover:bg-green-800 
-                         active:bg-green-700 sm:active:bg-green-800 
-                         rounded-md sm:rounded-lg md:rounded-xl 
-                         shadow-sm sm:shadow-md md:shadow-lg 
-                         hover:shadow-md sm:hover:shadow-lg md:hover:shadow-xl 
-                         transition-all duration-200 ease-out 
-                         transform hover:scale-105 active:scale-95 
-                         cursor-pointer 
-                         focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2">
-                Change Text
-            </button>
-
-            <!-- Change Color Button -->
-            <button id="btn-color" class="w-full sm:w-auto 
-                         px-4 sm:px-6 md:px-8 lg:px-10 
-                         py-2 sm:py-2.5 md:py-3 lg:py-3.5 
-                         text-sm sm:text-base md:text-lg 
-                         font-semibold text-white 
-                         bg-blue-500 sm:bg-blue-600 md:bg-blue-700 
-                         hover:bg-blue-600 sm:hover:bg-blue-700 md:hover:bg-blue-800 
-                         active:bg-blue-700 sm:active:bg-blue-800 
-                         rounded-md sm:rounded-lg md:rounded-xl 
-                         shadow-sm sm:shadow-md md:shadow-lg 
-                         hover:shadow-md sm:hover:shadow-lg md:hover:shadow-xl 
-                         transition-all duration-200 ease-out 
-                         transform hover:scale-105 active:scale-95 
-                         cursor-pointer 
-                         focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
-                Change Color
-            </button>
-
+<body class="min-h-screen bg-gray-100 font-sans">
+    
+    <!-- Navigation Sidebar -->
+    <nav class="fixed left-0 top-0 h-full w-64 bg-gray-900 text-white transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50" id="sidebar">
+        <div class="p-6 border-b border-gray-800">
+            <h1 class="text-xl font-bold text-center">
+                <i class="fas fa-cube mr-2"></i>Admin Panel
+            </h1>
         </div>
+        
+        <ul class="mt-6 space-y-2 px-4">
+            <li>
+                <a href="#/" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/">
+                    <i class="fas fa-tachometer-alt w-6"></i>
+                    <span class="hidden md:inline">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/users" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/users">
+                    <i class="fas fa-users w-6"></i>
+                    <span class="hidden md:inline">Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/products" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/products">
+                    <i class="fas fa-box w-6"></i>
+                    <span class="hidden md:inline">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="#/orders" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors nav-link" data-route="/orders">
+                    <i class="fas fa-shopping-cart w-6"></i>
+                    <span class="hidden md:inline">Orders</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="fixed top-4 left-4 z-50 md:hidden bg-gray-900 text-white p-3 rounded-lg shadow-lg">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content Area -->
+    <main class="md:ml-64 min-h-screen p-4 sm:p-6 md:p-8 lg:p-10 transition-all duration-300" id="main-content">
+        <!-- Dynamic content loads here -->
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 transition-transform duration-300 z-50">
+        <span id="toast-message"></span>
     </div>
 
     <script src="script.js"></script>
